@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun, romantic font */
+            background: linear-gradient(to bottom, #ffe6e6, #ffb3ba); /* Pink gradient background */
+            color: #d63384;
+            text-align: center;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent; /* Remove tap highlights on mobile */
+        }
+        /* Floating hearts animation - More hearts added */
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            color: red;
+            animation: float 6s infinite linear;
+        }
+        .heart:nth-child(1) { left: 5%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 10%; animation-delay: 0.5s; }
+        .heart:nth-child(3) { left: 15%; animation-delay: 1s; }
+        .heart:nth-child(4) { left: 20%; animation-delay: 1.5s; }
+        .heart:nth-child(5) { left: 25%; animation-delay: 2s; }
+        .heart:nth-child(6) { left: 30%; animation-delay: 2.5s; }
+        .heart:nth-child(7) { left: 35%; animation-delay: 3s; }
+        .heart:nth-child(8) { left: 40%; animation-delay: 3.5s; }
+        .heart:nth-child(9) { left: 45%; animation-delay: 4s; }
+        .heart:nth-child(10) { left: 50%; animation-delay: 4.5s; }
+        .heart:nth-child(11) { left: 55%; animation-delay: 5s; }
+        .heart:nth-child(12) { left: 60%; animation-delay: 5.5s; }
+        .heart:nth-child(13) { left: 65%; animation-delay: 6s; }
+        .heart:nth-child(14) { left: 70%; animation-delay: 6.5s; }
+        .heart:nth-child(15) { left: 75%; animation-delay: 7s; }
+        .heart:nth-child(16) { left: 80%; animation-delay: 7.5s; }
+        .heart:nth-child(17) { left: 85%; animation-delay: 8s; }
+        .heart:nth-child(18) { left: 90%; animation-delay: 8.5s; }
+        .heart:nth-child(19) { left: 95%; animation-delay: 9s; }
+        .heart:nth-child(20) { left: 100%; animation-delay: 9.5s; }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        p {
+            font-size: 1.5em;
+        }
+        .big-question {
+            font-size: 2.5em; /* Bigger question text */
+            font-weight: bold;
+        }
+        .big-heart {
+            font-size: 5em;
+            color: red;
+            margin: 20px 0;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 20px 40px; /* Larger padding for mobile taps */
+            font-size: 1.5em; /* Bigger font */
+            cursor: pointer;
+            border-radius: 50px; /* Rounded buttons */
+            margin: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            position: relative; /* For relocation */
+            min-width: 120px; /* Minimum width for touch */
+            min-height: 60px; /* Minimum height for touch */
+        }
+        button:hover, button:active {
+            background-color: #ff1493;
+            transform: scale(1.1);
+        }
+        button.no {
+            background-color: #ccc;
+        }
+        button.no:hover, button.no:active {
+            background-color: #aaa;
+            transform: scale(1.1);
+        }
+        .hidden {
+            display: none;
+        }
+        .final-yay {
+            font-size: 4em; /* Big letters for Yayyyyyyyyyyy */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts">
+        <div class="heart">❤️</div>
+        <div class="heart">💖</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💕</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💖</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💕</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💖</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💕</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💖</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💕</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💖</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💕</div>
+    </div>
+    <div class="big-heart">❤️</div>
+    <div id="question1">
+        <h1>Helloooo Babyyyy,</h1>
+        <p class="big-question">Can you be my valentine? ❤️</p>
+        <button id="yes1" onclick="nextQuestion(2)">Yes!</button>
+        <button class="no" id="no1" onclick="handleNo()">No</button>
+    </div>
+    <div id="question2" class="hidden">
+        <h1>Reallyyy? 🤩❤️</h1>
+        <button id="yes2" onclick="nextQuestion(3)">Yes!</button>
+        <button class="no" id="no2" onclick="handleNo()">No</button>
+    </div>
+    <div id="question3" class="hidden">
+        <h1>Reallyyy reallyyyy? 🤩🤩❤️❤️</h1>
+        <button id="yes3" onclick="finalYes()">Yes!</button>
+        <button class="no" id="no3" onclick="handleNo()">No</button>
+    </div>
+    <div id="final" class="hidden">
+        <h1 class="final-yay">Yayyyyyyyyyyy,</h1>
+        <p>see you on feb 14 if di ka busyyyy!! If busy ka naman, edi next dayy WHAHAHA</p>
+        <p>I love youuuu, Babyyyyy!!</p>
+        <p><a href="https://humpreygonzales-crypto.github.io/valentine-proposal1/date-plan.html">click the link here</a></p>
+    </div>
+
+    <script>
+        let noCount = 0; // Track number of "No" presses
+
+        function nextQuestion(num) {
+            resetYesButtons(); // Reset Yes button sizes when moving to next question
+            // Hide all questions
+            document.getElementById('question1').classList.add('hidden');
+            document.getElementById('question2').classList.add('hidden');
+            document.getElementById('question3').classList.add('hidden');
+            document.getElementById('final').classList.add('hidden');
+            // Show the next one
+            document.getElementById('question' + num).classList.remove('hidden');
+        }
+
+        function finalYes() {
+            resetYesButtons(); // Reset Yes button sizes on final yes
+            // Hide all and show final
+            document.getElementById('question1').classList.add('hidden');
+            document.getElementById('question2').classList.add('hidden');
+            document.getElementById('question3').classList.add('hidden');
+            document.getElementById('final').classList.remove('hidden');
+        }
+
+        function handleNo() {
+            noCount++;
+
+            // Relocate the "No" button to a random position within visible area
+            const noButtons = document.querySelectorAll('.no');
+            noButtons.forEach(button => {
+                const maxX = window.innerWidth - button.offsetWidth - 20; // Leave margin
+                const maxY = window.innerHeight - button.offsetHeight - 100; // Leave margin for UI
+                const randomX = Math.max(20, Math.random() * maxX); // Min 20px from edge
+                const randomY = Math.max(100, Math.random() * maxY); // Min 100px from top
+                button.style.position = 'absolute';
+                button.style.left = randomX + 'px';
+                button.style.top = randomY + 'px';
+            });
+
+            // Make "Yes" buttons 2x bigger each time
+            const yesButtons = document.querySelectorAll('button:not(.no)');
+            yesButtons.forEach(button => {
+                const scale = 2 ** noCount; // Double the size each "No" press
+                button.style.transform = `scale(${scale})`;
+            });
+        }
+
+        function resetYesButtons() {
+            // Reset all Yes buttons to normal size
+            const yesButtons = document.querySelectorAll('button:not(.no)');
+            yesButtons.forEach(button => {
+                button.style.transform = 'scale(1)';
+            });
+        }
+    </script>
+</body>
+</html>
